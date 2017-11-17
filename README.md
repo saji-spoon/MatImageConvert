@@ -14,6 +14,7 @@ OpenCV 3.3.1
 - Setup OpenCV in the project (Add include directory, lib directory...)
 - Submodule or download this repository and add MatImageConvert.hpp/cpp to the project 
 
+## Code
 ```cpp
 #include <Siv3D.hpp> // OpenSiv3D v0.1.7
 #include <opencv2/opencv.hpp>
@@ -33,4 +34,6 @@ void Main()
         }
 }
 ```
+
+## Result
 
