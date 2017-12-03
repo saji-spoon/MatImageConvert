@@ -2,8 +2,8 @@
 
 cv::Mat cvsiv::ImageToMat(s3d::Image& image)
 {
-        cv::Mat_<cv::Vec4b> mat(image.height(), image.width(), static_cast<cv::Vec4b*>(static_cast<void*>(image.data())), image.stride());
-
+        cv::Mat_<cv::Vec4b> mat(image.height, image.width, static_cast<cv::Vec4b*>(image.data()), image.stride);
+        
         return mat;
 }
 
