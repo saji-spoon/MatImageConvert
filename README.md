@@ -5,7 +5,7 @@ cv::Mat←→s3d::Image Converter
 Siv3D August v2  
 OpenCV **3.0.0**   
  (Only OpenCV header(.hpp) is required because Siv3D uses its own OpenCV lib.  
-  Instead, Other version is not available)
+  Instead, other version is not available)
 
 # Example
 
