@@ -2,36 +2,57 @@
 cv::Mat←→s3d::Image Converter
 
 # Requirement (Other environments aren't tested)
-Visual Studio Community 2017 15.4.3  
-OpenSiv3D v0.1.7  
-OpenCV 3.3.1
+Siv3D August v2  
+OpenCV **3.0.0**  
+ (Only OpenCV header(.hpp) is required because Siv3D uses its own OpenCV lib.  
+  Instead, Other version is not available)
 
 # Example
 
 ## Precondition
 
-- Use OpenSiv3D project
-- Setup OpenCV in the project (Add include directory, lib directory...)
+- Use Siv3D project
+- Add OpenCV 3.0.0 include directory to "Additional include directories" in project settings
 - Submodule or download this repository and add MatImageConvert.hpp/cpp to the project 
 
 ## Code
 ```cpp
-#include <Siv3D.hpp> // OpenSiv3D v0.1.7
-#include <opencv2/opencv.hpp>
+#define NO_S3D_USING
+#include<opencv2/opencv.hpp>
+#include <Siv3D.hpp>
 #include "../MatImageConvert/MatImageConvert.hpp"
 
 void Main()
 {
-        cv::Mat mat = cv::imread("example/windmill.png", cv::IMREAD_UNCHANGED);
+        s3d::Window::Resize(800,600);
 
-        s3d::Image image = cvsiv::MatToImageForce(mat, true);
+        s3d::Image image(L"Example/Windmill.png");
 
-        s3d::Texture texture(image);
+        //Get cv::Mat that refer s3d::Image's pixel data 
+        cv::Mat mat = cvsiv::GetMatLinkedToImage(image);        
 
-        while (System::Update())
-        {
-                texture.draw();
-        }
+        cv::Rect roiRect(0, 0, 200, 200);
+
+        //If you get new cv::Mat from original one...
+        cv::Mat roiMat = mat(roiRect);
+
+        //Convert it to s3d::Image explicitly
+        s3d::Image cutImage = cvsiv::MatToImage(roiMat);
+
+        //Otherwise, if you apply effect or other to original one, the change is applied to s3d::Image 
+        cv::blur(mat, mat, cv::Size(5, 5));
+        
+        //image ... Blured Image (from mat) 
+        s3d::Texture tex1(image);
+
+        //cutImage ... Cut Image (roiMat is generated from mat, and is converted by cvsiv::MatToImage)
+        s3d::Texture tex2(cutImage);
+
+        while (s3d::System::Update())
+	{
+                tex1.draw();
+                tex2.draw(500,0);
+	}
 }
 ```
 
