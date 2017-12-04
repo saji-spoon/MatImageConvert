@@ -20,18 +20,18 @@ namespace cvsiv
         cv::Mat ImageToMat(s3d::Image& image);
 
         /// <summary>
-        /// 引数のcv::MatがMatToImageForceを適用できるかどうか返します。
+        /// 引数のcv::MatがMatToImageForceで変換可能かどうか返します。
         /// </summary>
         /// <param name="image">検査するcv::Mat</param>
-        /// <returns>適用可能ならtrue, 不可ならfalse</returns>
-        bool IsPossibleMatToImageForce(const cv::Mat& mat);
+        /// <returns>可能ならtrue, 不可ならfalse</returns>
+        bool IsConvertibleByMatToImageForce(const cv::Mat& mat);
 
         /// <summary>
-        /// 引数のcv::MatがMatToImageを適用できるかどうか返します。
+        /// 引数のcv::MatがMatToImageで変換可能かどうか返します。
         /// </summary>
         /// <param name="image">検査するcv::Mat</param>
-        /// <returns>適用可能ならtrue, 不可ならfalse</returns>
-        bool IsPossibleMatToImage(const cv::Mat& mat);
+        /// <returns>可能ならtrue, 不可ならfalse</returns>
+        bool IsConvertibleByMatToImage(const cv::Mat& mat);
 
         /// <summary>
         /// <para>下記の条件を満たすcv::Matからs3d::Imageを新しく作成します。</para>

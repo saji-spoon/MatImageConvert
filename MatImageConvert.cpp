@@ -18,7 +18,7 @@ cv::Mat cvsiv::ImageToMat(s3d::Image& image)
         return mat;
 }
 
-bool cvsiv::IsPossibleMatToImageForce(const cv::Mat& mat)
+bool cvsiv::IsConvertibleByMatToImageForce(const cv::Mat& mat)
 {
         if (mat.data == nullptr)
         {
@@ -45,9 +45,9 @@ bool cvsiv::IsPossibleMatToImageForce(const cv::Mat& mat)
         return true;
 }
 
-bool cvsiv::IsPossibleMatToImage(const cv::Mat& mat)
+bool cvsiv::IsConvertibleByMatToImage(const cv::Mat& mat)
 {
-        if (!IsPossibleMatToImageForce(mat)) return false;
+        if (!IsConvertibleByMatToImageForce(mat)) return false;
 
         if (mat.channels() != 4)
         {
@@ -78,7 +78,7 @@ s3d::Image cvsiv::MatToImage(const cv::Mat& mat)
 
 s3d::Image cvsiv::MatToImageForce(const cv::Mat& mat, bool isRGB)
 {
-        if (!IsPossibleMatToImageForce(mat)) return s3d::Image();        
+        if (!IsConvertibleByMatToImageForce(mat)) return s3d::Image();        
 
         cv::Mat copy = mat.clone();
 
