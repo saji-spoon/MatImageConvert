@@ -3,7 +3,7 @@ cv::Mat←→s3d::Image 変換関数
 
 # 要件（他環境は未テスト）
 Siv3D August v2  
-OpenCV ** 3.0.0 **  
+OpenCV **3.0.0**  
  （OpenCVのヘッダ（.hpp）のみ利用します。
   OpenCVの他のバージョンは利用できません）
 
