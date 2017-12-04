@@ -1,5 +1,4 @@
 #pragma once
-#define NO_S3D_USING
 #include<opencv2/opencv.hpp>
 #include<Siv3D.hpp>
 
