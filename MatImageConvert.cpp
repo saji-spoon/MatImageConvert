@@ -69,7 +69,7 @@ s3d::Image cvsiv::MatToImage(const cv::Mat& mat)
 {
         s3d::Image image(mat.cols, mat.rows);
 
-        cv::Mat dst = ImageToMat(image);
+        cv::Mat dst = GetMatLinkedToImage(image);
 
         mat.copyTo(dst);
 

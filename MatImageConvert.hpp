@@ -2,6 +2,7 @@
 #include<opencv2/opencv.hpp>
 #include<Siv3D.hpp>
 
+
 namespace cvsiv
 {
         /// <summary>
